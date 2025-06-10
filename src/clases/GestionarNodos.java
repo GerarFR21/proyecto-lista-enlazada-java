@@ -4,7 +4,7 @@ public interface GestionarNodos {
 
     void agregarNodoAlInicio(int valor);
 
-    void suprimirNodoDeLaLista(int valor);
+    String suprimirNodoDeLaLista(int valor);
 
     void ordenarElementosDeLaLista();
 
@@ -12,5 +12,5 @@ public interface GestionarNodos {
 
     String listarElementos();
 
-    void vaciarLista();
+    boolean vaciarLista();
 }

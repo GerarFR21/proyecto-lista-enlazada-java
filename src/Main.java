@@ -28,6 +28,8 @@ public class Main {
                     JOptionPane.showMessageDialog(null, "¡Elemento agregado al inicio de la lista!");
                     break;
                 case 2:
+                    valor = Integer.parseInt(JOptionPane.showInputDialog("Ingresa valor entero que deseas eliminar: "));
+                    JOptionPane.showMessageDialog(null, gestionarNodos.suprimirNodoDeLaLista(valor));
                     break;
                 case 3:
                     break;
@@ -43,8 +45,8 @@ public class Main {
                     JOptionPane.showMessageDialog(null, gestionarNodos.listarElementos());
                     break;
                 case 6:
-                    JOptionPane.showMessageDialog(null, "Vaciando la lista...");
-                    gestionarNodos.vaciarLista();
+                    JOptionPane.showMessageDialog(null,
+                            gestionarNodos.vaciarLista() ? "Vaciando la lista..." : "¡La lista esta vacia!");
                     break;
                 case 0:
                     JOptionPane.showMessageDialog(null, "Saliendo del programa...");

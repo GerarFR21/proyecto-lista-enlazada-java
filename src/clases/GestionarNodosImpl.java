@@ -1,7 +1,5 @@
 package clases;
 
-import javax.swing.*;
-
 public class GestionarNodosImpl implements GestionarNodos {
 
     private Nodo cabeza;
@@ -24,8 +22,50 @@ public class GestionarNodosImpl implements GestionarNodos {
     }
 
     @Override
-    public void suprimirNodoDeLaLista(int valor) {
+    public String suprimirNodoDeLaLista(int valor) {
 
+        if(cabeza == null) return "¡La lista esta vacia!";
+
+        if(cabeza.getValor() == valor){
+            if (cabeza.getSiguiente() != null){
+
+                cabeza = cabeza.getSiguiente();
+                cabeza.getAnterior().setSiguiente(null);
+                cabeza.setAnterior(null);
+            }
+            else
+                cabeza = null;
+
+            Nodo.decrementarCantidad();
+            return "Se elimino exitosamente el elemento: " + valor;
+        }
+
+        actual = cabeza.getSiguiente();
+
+        while(actual != null){
+            if(actual.getValor() == valor){
+
+                if(actual.getSiguiente() != null){
+
+                    actual.getAnterior().setSiguiente(actual.getSiguiente());
+                    actual.getSiguiente().setAnterior(actual.getAnterior());
+                    actual.setAnterior(null);
+                    actual.setSiguiente(null);
+                }else{
+
+                    actual.getAnterior().setSiguiente(null);
+                    actual.setAnterior(null);
+                }
+
+                actual = null;
+                Nodo.decrementarCantidad();
+                return "Se elimino exitosamente el elemento: " + valor;
+            }
+
+            actual = actual.getSiguiente();
+        }
+
+        return "El elemento " + valor + " no existe en la lista.";
     }
 
     @Override
@@ -74,8 +114,8 @@ public class GestionarNodosImpl implements GestionarNodos {
     }
 
     @Override
-    public void vaciarLista() {
-        if(cabeza == null) return;
+    public boolean vaciarLista() {
+        if(cabeza == null) return false;
 
         actual = cabeza;
         while (actual != null){
@@ -92,5 +132,6 @@ public class GestionarNodosImpl implements GestionarNodos {
         }
 
         cabeza = null;
+        return true;
     }
 }
