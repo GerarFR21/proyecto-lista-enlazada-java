@@ -69,8 +69,30 @@ public class GestionarNodosImpl implements GestionarNodos {
     }
 
     @Override
-    public void ordenarElementosDeLaLista() {
+    public boolean ordenarElementosDeLaLista() {
+        if (cabeza == null) return false;
 
+        actual = cabeza.getSiguiente();
+
+        while (actual != null) {
+            int valorActual = actual.getValor();
+            Nodo anterior = actual.getAnterior();
+
+            while (anterior != null && anterior.getValor() > valorActual) {
+                anterior.getSiguiente().setValor(anterior.getValor());
+                anterior = anterior.getAnterior();
+            }
+
+            if (anterior == null) {
+                cabeza.setValor(valorActual);
+            } else {
+                anterior.getSiguiente().setValor(valorActual);
+            }
+
+            actual = actual.getSiguiente();
+        }
+
+        return true;
     }
 
     @Override

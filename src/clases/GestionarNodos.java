@@ -6,7 +6,7 @@ public interface GestionarNodos {
 
     String suprimirNodoDeLaLista(int valor);
 
-    void ordenarElementosDeLaLista();
+    boolean ordenarElementosDeLaLista();
 
     boolean agregarNodoAlFinal(int valor);
 

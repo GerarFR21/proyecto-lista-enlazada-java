@@ -25,20 +25,26 @@ public class Main {
                 case 1:
                     int valor = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un valor entero: "));
                     gestionarNodos.agregarNodoAlInicio(valor);
-                    JOptionPane.showMessageDialog(null, "¡Elemento agregado al inicio de la lista!");
+                    JOptionPane.showMessageDialog(null,
+                            "¡Elemento agregado al inicio de la lista!");
                     break;
                 case 2:
                     valor = Integer.parseInt(JOptionPane.showInputDialog("Ingresa valor entero que deseas eliminar: "));
                     JOptionPane.showMessageDialog(null, gestionarNodos.suprimirNodoDeLaLista(valor));
                     break;
                 case 3:
+                    JOptionPane.showMessageDialog(null,
+                            gestionarNodos.ordenarElementosDeLaLista() ? "¡Lista ordenada!" :
+                                    "¡Lista vacia!");
                     break;
                 case 4:
                     valor = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un valor entero: "));
                     if (gestionarNodos.agregarNodoAlFinal(valor))
-                        JOptionPane.showMessageDialog(null, "¡Elemento agregado al final de la lista!");
+                        JOptionPane.showMessageDialog(null,
+                                "¡Elemento agregado al final de la lista!");
                     else
-                        JOptionPane.showMessageDialog(null, "¡Primero agrega un elemento al inicio!");
+                        JOptionPane.showMessageDialog(null,
+                                "¡Primero agrega un elemento al inicio!");
 
                     break;
                 case 5:
